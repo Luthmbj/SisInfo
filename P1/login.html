@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta name="title" content="Viaggio" />
+	<meta name="description" content="Comparador" />
+	<meta name="author" content="Blah" />
+	<title>Viaggio, comparador de viajes</title>
+ 
+        <link rel="stylesheet" href="css/style.css">
+        
+<!-- RESPONSIVE -->
+<script src="css/jquery.min.js"></script>
+<script>
+$(function() {
+    var pull = $('#pull');
+    menu = $('nav ul');
+    menuHeight = menu.height();
+
+    $(pull).on('click', function(e) {
+        e.preventDefault();
+        menu.slideToggle();
+    });
+});
+
+$(window).resize(function(){
+    var w = $(window).width();
+    if(w > 320 && menu.is(':hidden')) {
+        menu.removeAttr('style');
+    }
+});
+</script> 
+</head>
+
+<body>
+<!-- Menú cabecera --> 
+<header id="main-header">
+		
+<a href="index.html"><img alt="Home" id="logo-header" src="img/logo.png"></a>
+<nav class="clearfix">
+	<ul class="clearfix">
+		<li><a href="#">Hotel</a></li>
+		<li><a href="#">Vuelo</a></li>
+		<li><a href="#">Coche</a></li>
+        <li><a href="#">  Mi cuenta</a></li><br clear="all" />
+	</ul>
+<a href="#" id="pull"></a>
+ </nav>
+ 
+</header>
+    
+<!-- Formularios -->
+<div class="contLog" id="centro">
+
+<div class="formReg" id="registro">
+<h3> ¿Eres nuevo?¡Regístrate! </h3>
+<form class="formLog">
+<!-- Campos a 2 columnas -->
+<div class="colsFormL">
+				<label for="nombre">Nombre:</label> 
+				<br>
+				<input id="nombre" type="text" value="Nombre" style='color:lightgray'>
+                <br>
+                <label for="date">Fecha de nacimiento:</label> 
+        		<br>
+				<input id="date" type="date" value="dd/mm/yyyy" style='color:lightgray'>
+      			<br>
+                <label for="contra">Contraseña: </label>
+				<br>
+				<input id="clave" type="password">
+				<br><br>
+</div>
+<div class="colsFormR">
+     			<label for="apel">Apellidos: </label>
+      			<br>
+				<input id="apel" type="text" value="Apellidos" style='color:lightgray'>
+                <br>
+                <label for="email">Correo electrónico: </label>
+				<br>
+				<input id="email" type="text" value="Email" style='color:lightgray'>
+      			<br>
+                <label for="repcon">Repetir contraseña: </label>
+				<br>
+				<input id="repcon" type="password">
+                <br><br>
+</div>
+
+<div>
+<input type="submit" value="Registrase" class="boton bLog">
+<br>
+
+</div>
+			</form>
+		</div>
+       
+        
+<div id="inicio" class="formReg"> <!-- antes tb  style='float:left;width:185px;height:230px;padding:10px;margin:0 0 0 80px;background-color:lightblue;' -->
+<h3>  Acceder a mi cuenta </h3>
+<form class="formLog">
+<div class="colsFormL">
+<label for="user">Usuario:</label>
+<br>
+<input name="user" type="text" value="email" style='color:lightgray'>
+<br><br>
+</div>
+
+<div class="colsFormR">
+<label for="pass">Contraseña:</label>
+<br>
+<input name="pass" type="password">
+<br><br>
+</div>
+               
+<div>
+<input type="submit" value="Iniciar sesión" class="boton bLog">
+</div>
+</form>
+		</div>
+	</div>
+    
+<!-- PIE DE PÁGINA -->    
+<footer id="main-footer">
+
+<div id='footer2'  class="colum2 column-left">
+  <p><strong>Viaggio</strong>
+  </br>Blog
+  </br>Mi cuenta
+  </br>Trabaja con nosotros
+  </p>
+  </br>
+</div>
+
+<div id='footer3'  class="colum2 column-center">
+  <p><strong>Contacto</strong>
+  </br>FAQS
+  </br>Propietarios de Hoteles
+  </br>Prensa
+  </p>
+  </br>
+</div>
+
+<div id='footer4'  class="colum2 column-right">
+  <p><strong>Seguridad</strong>
+  </br>Privacidad
+  </br>Términos y condiciones
+  </br>Aviso Legal
+  <p>&copy; 2017 Viaggio</p>
+  </br>
+  </p>
+</div>
+
+</div>
+</body>
+</html>
