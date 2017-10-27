@@ -8,6 +8,7 @@
 	<title>Viaggio, comparador de viajes</title>
  
     <link rel="stylesheet" href="css/style.css">
+    
 <!-- RESPONSIVE -->
 <script src="css/jquery.min.js"></script>
 <script>
@@ -29,20 +30,28 @@ $(window).resize(function(){
     }
 });
 </script> 
-
 <!-- PESTAÑAS -->
-<script type="text/javascript">
-function pestana(grupo_pesta, id_pesta){
-var pestanas = document.getElementById(grupo_pesta);
-var Tpestanas = pestanas.getElementsByTagName("div");
-for(var i=0; i<Tpestanas.length; i++) {
-Tpestanas[i].style.zindex="-1000";
-Tpestanas[i].style.visibility="hidden";
+<script>
+function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
 }
-document.getElementById(id_pesta).style.zIndex="1000";
-document.getElementById(id_pesta).style.vi<!-- Contenido centra -->
+</script>
+
+</head>
+<body>
+<!-- Contenido centra -->
 <div class="contUser">
-enú cabecera --> 
+<!-- Menú cabecera --> 
 <header id="main-header">
 		
 <a href="index.html"><img alt="Home" id="logo-header" src="img/logo.png"></a>
@@ -61,15 +70,11 @@ enú cabecera -->
 <!-- Contenido central -->
 <div class="contUser">
 
-
-
- <di
-class="tab">
+<div class="tab">
 <button class="tablinks" onclick="openCity(event, 'Hoteles')">Hoteles</button>
 <button class="tablinks" onclick="openCity(event, 'Vuelos')">Vuelos</button>
 <button class="tablinks" onclick="openCity(event, 'Coches')">Coches</button>
-<button class="tablinks" onclick="openCity(event,  <h3>London</h3>
-s</button>
+<button class="tablinks" onclick="openCity(event, 'Datos')">Mis Datos</button>
 </div>
 
 <div id="Hoteles" class="tabcontent">
@@ -79,8 +84,9 @@ s</button>
 
 <div id="Vuelos" class="tabcontent">
   <h3>Vuelos</h3>
-  <p>No tienes ninguna búsqueda g  <p>No tienes ninguna búsqueda guardada..</p>
-abcontent">
+  <p>No tienes ninguna búsqueda guardada</p>
+</div>
+<div id="Coches" class="tabcontent">
   <h3>Coches</h3>
   <p>No tienes ninguna búsqueda guardada</p>
 </div> 
@@ -89,9 +95,6 @@ abcontent">
   <h3>Mis Datos</h3>
   <p>No tienes ninguna búsqueda guardada</p>
 </div> 
-
-
-
 
 
 </div>
