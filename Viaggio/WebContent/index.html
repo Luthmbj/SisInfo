@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta name="title" content="Viaggio" />
+	<meta name="description" content="Comparador" />
+	<meta name="author" content="Blah" />
+    <meta name="viewport" content="widht=device-width, initial-scale=1, maximun-scale=1"/>
+	<title>Viaggio, comparador de viajes</title>
+	<link rel="stylesheet" href="css/style.css">
+        
+<!-- CÓDIGO PARA ELEGIR FECHA EN EL FORMULARIO-->
+<link rel="stylesheet" type="text/css" href="css/jquery-ui-1.7.2.custom.css" />
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
+ 	
+	<script type="text/javascript">
+jQuery(function($){
+	$.datepicker.regional['es'] = {
+		closeText: 'Cerrar',
+		prevText: '&#x3c;Ant',
+		nextText: 'Sig&#x3e;',
+		currentText: 'Hoy',
+		monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio',
+		'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+		monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun',
+		'Jul','Ago','Sep','Oct','Nov','Dic'],
+		dayNames: ['Domingo','Lunes','Martes','Mi&eacute;rcoles','Jueves','Viernes','S&aacute;bado'],
+		dayNamesShort: ['Dom','Lun','Mar','Mi&eacute;','Juv','Vie','S&aacute;b'],
+		dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','S&aacute;'],
+		weekHeader: 'Sm',
+		dateFormat: 'dd/mm/yy',
+		firstDay: 1,
+		isRTL: false,
+		showMonthAfterYear: false,
+		yearSuffix: ''};
+	$.datepicker.setDefaults($.datepicker.regional['es']);
+});    
+
+        $().ready(function() {
+           $("#datepicker").datepicker(); /* Llegada */
+		    $("#datepicker2").datepicker(); /* Salida */
+        });
+    </script>
+    
+<!-- RESPONSIVE -->
+<script src="css/jquery.min.js"></script>
+<script>
+$(function() {
+    var pull = $('#pull');
+    menu = $('nav ul');
+    menuHeight = menu.height();
+
+    $(pull).on('click', function(e) {
+        e.preventDefault();
+        menu.slideToggle();
+    });
+});
+
+$(window).resize(function(){
+    var w = $(window).width();
+    if(w > 320 && menu.is(':hidden')) {
+        menu.removeAttr('style');
+    }
+});
+</script> 
+</head>
+ 
+<body>
+<!-- Menú cabecera --> 
+<header id="main-header">
+		
+<a href="index.html"><img alt="Home" id="logo-header" src="img/logo.png"></a>
+<nav class="clearfix">
+	<ul class="clearfix">
+		<li><a href="#">Hotel</a></li>
+		<li><a href="#">Vuelo</a></li>
+		<li><a href="#">Coche</a></li>
+        <li><a href="#">  Mi cuenta</a></li><br clear="all" />
+	</ul>
+<a href="#" id="pull"></a>
+ </nav>
+ 
+</header>
+ 
+	
+<section id="main-content">
+<div class="banform">
+<h1>Todos los hoteles</h1>
+<form>
+<input name="Lugar" type="text" placeholder="Lugar" size="50" maxlength="30">
+<input type="text" name="Llegada" placeholder="Fecha de llegada" id="datepicker" size="15" />
+<input type="text" name="Salida" placeholder="Fecha de salida" id="datepicker2" size="15" />
+<select name="habitacion" size="1">
+<option>1 adulto, 1 habitaci&oacute;n</option>
+<option>2 adultos, 1 habitaci&oacute;n</option>
+<option>2 adultos, 2 habitaciones</option>
+<option>1 adulto, 1 ni&ntilde;o, 1 habitaci&oacute;n</option>
+<option>2 adultos, 1 ni&ntilde;o, 1 habitaci&oacute;n</option>
+<option>2 adultos, 1 ni&ntilde;o, 2 habitaciones</option>
+</select>
+<input name="Buscar" type="button" value="Buscar" class="boton bIn">
+</form>
+
+</div>	
+<article>
+<header>	
+<h2>Destinos más populares</h2>		
+</header>
+
+<div class='destinos'>	
+		
+<!--<div style=' float: left;text-align: left;'>-->
+<div class=" colum column-left">
+<img alt="Barcelona" src="img/bcn.png">
+</br>
+<p>Barcelona</p>
+</div>
+
+<!--<div style=' float: left;  text-align: left;'>-->
+<div class="colum column-center">
+<img alt="Madrid" src="img/madrid.png">
+</br>
+<p>Madrid</p>
+</div>
+
+<!--<div style='float: right;text-align: left;'>-->
+<div class="colum column-right">
+<img alt="Londres" src="img/londres.png">
+</br>
+<p>Londres</p>
+</div>
+
+</div>
+	
+</article> <!-- /article -->
+	
+	</section> <!-- / #main-content -->
+
+ <!-- PIE DE PÁGINA -->     
+<footer id="main-footer">
+
+<div id='footer2'  class="colum2 column-left">
+  <p><strong>Viaggio</strong>
+  </br>Blog
+  </br>Mi cuenta
+  </br>Trabaja con nosotros
+  </p>
+  </br>
+</div>
+
+<div id='footer3'  class="colum2 column-center">
+  <p><strong>Contacto</strong>
+  </br>FAQS
+  </br>Propietarios de Hoteles
+  </br>Prensa
+  </p>
+  </br>
+</div>
+
+<div id='footer4'  class="colum2 column-right">
+  <p><strong>Seguridad</strong>
+  </br>Privacidad
+  </br>Términos y condiciones
+  </br>Aviso Legal
+  <p>&copy; 2017 Viaggio</p>
+  </br>
+  </p>
+</div>
+
+</div>
+
+</body>
+</html>
