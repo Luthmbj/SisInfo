@@ -190,28 +190,48 @@ $(window).resize(function(){
 <div class="banform">
 </br>
 
-<center>
+
 <h1>Todos los hoteles</h1>
+
 <form>
-<input name="Lugar" type="text" placeholder="Lugar" size="50" maxlength="30">
-<input type="text" name="fechal" placeholder="Fecha de llegada" id="fechal" size="15" value=""/>
-<input type="text" name="fechas" placeholder="Fecha de salida" id="fechas" size="15" value="" />
-<br/><br/>
-<label title="nper" style="color:#FFFFFF">Nº de personas</label>
+<div class="reaj1">
+<center><input name="Lugar" type="text" placeholder="Lugar" size="20" maxlength="30">
+<input type="text" name="fechal" placeholder="Fecha de llegada" id="fechal" size="20" value=""/>
+<input type="text" name="fechas" placeholder="Fecha de salida" id="fechas" size="20" value="" /> 
+
+<!-- <br/><br/> -->
+</div>
+</center>
+
+<center>
+<div class="reaj3">
+<div class="colum2 r1">
+<label title="nper" style="color:#FFFFFF; font-size:15px"><!--&nbsp;&nbsp;&nbsp;-->Nº de personas</label>
 <input style="color:#ffffff; background-color:#00a5d3; border-radius:0px;border: 2px solid #007096;" type="button" onClick="incrementarP()" value="+"size="1">
-<input style="color:#ffffff; background-color:#00a5d3; border-radius:0px;border: 2px solid #007096;" type="button" onClick="decrementarP()" value="-" size="1">
 <label>
 <input  name="resultadoP" id="resultadoP" type="text" value="1" onClick="contadorP = this.value" 
 onchange="contador = this.value" size="1">
 </label>
-<label title="nhab" style="color:#FFFFFF">Nº de habitaciones</label>
+<input style="color:#ffffff; background-color:#00a5d3; border-radius:0px;border: 2px solid #007096;" type="button" onClick="decrementarP()" value="-" size="1">
+</div>
+
+<div class="colum2 r1">
+<label title="nhab" style="color:#FFFFFF; font-size:15px">&nbsp;&nbsp;&nbsp;&nbsp;Nº de habitaciones</label>
 <input style="color:#ffffff; background-color:#00a5d3; border-radius:0px;border: 2px solid #007096;" type="button" onClick="incrementarH()" value="+"size="1">
-<input style="color:#ffffff; background-color:#00a5d3; border-radius:0px;border: 2px solid #007096;" type="button" id="menos" onClick="decrementarH()" value="-" size="1">
 <label>
 <input name="resultadoH" id="resultadoH" type="text" value="1" onClick="contadorH = this.value" 
 onchange="contadorH = this.value" size="1">
 </label>
+<input style="color:#ffffff; background-color:#00a5d3; border-radius:0px;border: 2px solid #007096;" type="button" id="menos" onClick="decrementarH()" value="-" size="1">
+</div>
+</div>
+</center>
+
+<center>
+<div class="reaj2">
 <input name="Buscar" type="button" value="Buscar" class="boton bIn">
+</div>
+</center>
 </form>
 </center>
 </div>	

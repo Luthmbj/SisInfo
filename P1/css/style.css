@@ -66,7 +66,9 @@ img {
 .column-right{ float: right; width: 33%; }
 .column-center{ display: inline-block; width: 33%; }
 
-/* Formulario Registro*/
+/*******************************/
+/***** Formulario Registro*****/
+/*****************************/
 .formReg{ /* Cajita azul */
 	background-color:lightblue;
 	float:left;
@@ -104,7 +106,6 @@ img {
 	font-family: Arial, Helvetica, sans-serif;
 	border:0; 
 	text-decoration:underline;
-	
 }
 .bIn{ /* index */
 	width: 88px;
@@ -115,10 +116,10 @@ img {
  	width: 200px;
 	height: 25px;
 }
+
 /* User*/
 .contUser{ /* contenedor general */
 	width:100%;
-	/*height: 50%;*/
 	padding: 40px 0;
 	background-color:#e6e6e6;
 	text-align:center;
@@ -127,10 +128,10 @@ img {
     background: #001625;
     color: white;
     text-align: center;
-	/*margin-top:65%;*/
 	padding: 2% 0 30% 0;
 	height:5%; /* 10%*/
 }
+
 
 /************ 
 //------------------------------
@@ -198,7 +199,7 @@ div.tab button.active {
 }
 
 .banform form{ /*  clase banner principal con formulario*/
-	margin: 6% 10%;
+	margin: 2% 10%;
 }
 
 .destinos{
@@ -212,6 +213,17 @@ div.tab button.active {
     margin: 0px 0;
     text-align: center;
     font-weight: 300;
+}
+/* Reajuste delos campos del formulario*/
+.reaj1{
+	width: 100%;
+}
+.reaj3{
+	width: 100%;
+}
+
+.r1{	
+	display: inline-block; width: auto;  /* 50% */
 }
 
 /***********ORDENADOR**************/
@@ -421,8 +433,10 @@ nav {
     }
     #main-footer a {
         color: white;
-    }		
-	
+    }	
+	.r1{
+		width:auto;
+	}
 }
 @media (max-width: 1150px) {
 .formReg{
@@ -437,6 +451,14 @@ nav {
 .formLog{
 	margin:0 0 5% 17%;
 	text-align:left; 
+}
+
+/* Reajuste delos campos del formulario*/
+.reaj1{ /* texto */
+	width: 100%;
+}
+.reaj3{ /* pers/hab */
+	width: 100%;
 }
 
 }
@@ -560,6 +582,14 @@ nav {
     #main-footer a {
         color: white;
     }
+	
+	/* Reajuste delos campos del formulario*/
+	.reaj1{ /* texto */
+		width:100%;
+	}
+	.reaj3{ /* pers/hab */
+		width: 100%;
+	}
 				
 }	
 @media (max-width: 600px) { /* móvil */
@@ -718,6 +748,9 @@ h2 {
         color: white;
     }
 
+.r1{
+	width:100%;	
+}
 
 }	
 @media (max-width: 480px) { /* móvil */
