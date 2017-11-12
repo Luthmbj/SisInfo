@@ -38,14 +38,14 @@ function comprobarClave(){
     clave2 = document.f1.clave2.value
 
 	if (clave1==""){
-		alert("Debe rellenar los dos campos contraseña...\n")
+		alert("Debe rellenar los dos campos contraseÃ±a...\n")
 	   return false;
 	}
     else if ((clave1 == clave2)) {
 		alert("Todo correcto. Falta mandar el formulario al servidor...\n")
 		return true;
 	}
-	//Aquí en vez del alert sería mandar los datos al servidor
+	//AquÃ­ en vez del alert serÃ­a mandar los datos al servidor
     else{
        alert("Las dos claves son distintas...\n")
 	   return false;
@@ -83,7 +83,7 @@ function comprobarEmail2(){
 
 
 
-<!-- Función que comprueba si una fecha está en formato dd/mm/aaaa y es anterior a la actual -->
+<!-- FunciÃ³n que comprueba si una fecha estÃ¡ en formato dd/mm/aaaa y es anterior a la actual -->
 <script>
 function validaFechaDDMMAAAA(){
 	var fecha = document.f1.fN.value;
@@ -176,7 +176,7 @@ function validaFechaDDMMAAAA(){
 
 
 <body>
-<!-- Menú cabecera --> 
+<!-- MenÃº cabecera --> 
 <header id="main-header">
 		
 <a href="index.html"><img alt="Home" id="logo-header" src="img/logo.png"></a>
@@ -196,7 +196,7 @@ function validaFechaDDMMAAAA(){
 <div class="contLog" id="centro">
 
 <div class="formReg" id="registro">
-<h3> ¿Eres nuevo?¡Regístrate! </h3>
+<h3> Â¿Eres nuevo?Â¡RegÃ­strate! </h3>
 <form class="formLog" name="f1">
 <!-- Campos a 2 columnas -->
 <div class="colsFormL">
@@ -206,9 +206,9 @@ function validaFechaDDMMAAAA(){
                 <br>
                 <label for="date">Fecha de nacimiento:</label> 
         		<br>
-				<input name="fN" id="date" type="date" placeholder="dd/mm/aaaa" required>
+				<input name="fN" id="date" type="text" placeholder="dd/mm/aaaa" required>
       			<br>
-                <label for="contra">Contraseña: </label>
+                <label for="contra">ContraseÃ±a: </label>
 				<br>
 				<input id="clave" type="password" name="clave1" required>
 				<br><br>
@@ -218,11 +218,11 @@ function validaFechaDDMMAAAA(){
       			<br>
 				<input id="apel" type="text" placeholder="Apellidos"  required>
                 <br>
-                <label for="email">Correo electrónico: </label>
+                <label for="email">Correo electrÃ³nico: </label>
 				<br>
 				<input name="emailreg" id="email" type="text" placeholder="Email" required>
       			<br>
-                <label for="repcon">Repetir contraseña: </label>
+                <label for="repcon">Repetir contraseÃ±a: </label>
 				<br>
 				<input id="repcon" type="password" name="clave2" required>
                 <br><br>
@@ -248,20 +248,20 @@ function validaFechaDDMMAAAA(){
 </div>
 
 <div class="colsFormR">
-<label for="pass">Contraseña:</label>
+<label for="pass">ContraseÃ±a:</label>
 <br>
 <input name="pass" type="password" required>
 <br><br>
 </div>
                
 <div>
-<button class="boton bLog" name="submit" onClick="comprobarEmail2()">Iniciar sesión</button>
+<button class="boton bLog" name="submit" onClick="comprobarEmail2()">Iniciar sesiÃ³n</button>
 </div>
 </form>
 		</div>
 	</div>
     
- <!-- PIE DE PÁGINA -->     
+ <!-- PIE DE PÃGINA -->     
 <footer id="main-footer">
 
 <div id='footer2'  class="colum2 column-left">
@@ -285,7 +285,7 @@ function validaFechaDDMMAAAA(){
 <div id='footer4'  class="colum2 column-right">
   <p align="left"><strong>Seguridad</strong>
   </br>Privacidad
-  </br>Términos y condiciones
+  </br>TÃ©rminos y condiciones
   </br>Aviso Legal
   <p align="left">&copy; 2017 Viaggio</p>
   </br>
