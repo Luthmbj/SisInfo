@@ -192,16 +192,14 @@ $(window).resize(function(){
 
 
 <h1>Todos los hoteles</h1>
-
 <form>
 <div class="reaj1">
-<center><input name="Lugar" type="text" placeholder="Lugar" size="20" maxlength="30">
-<input type="text" name="fechal" placeholder="Fecha de llegada" id="fechal" size="20" value=""/>
-<input type="text" name="fechas" placeholder="Fecha de salida" id="fechas" size="20" value="" /> 
-
+<center><input type="text" name="Lugar" placeholder="Lugar" id="Lugar" size="20" value=""  required />
+<input type="text" name="fechal" placeholder="Fecha de llegada" id="fechal" size="20" value="" required/>
+<input type="text" name="fechas" placeholder="Fecha de salida" id="fechas" size="20" value="" required /> 
+</center>
 <!-- <br/><br/> -->
 </div>
-</center>
 
 <center>
 <div class="reaj3">
@@ -229,7 +227,7 @@ onchange="contadorH = this.value" size="1">
 
 <center>
 <div class="reaj2">
-<input name="Buscar" type="button" value="Buscar" class="boton bIn">
+<button class="boton bIn" name="Buscar">Buscar</button>
 </div>
 </center>
 </form>
@@ -244,21 +242,24 @@ onchange="contadorH = this.value" size="1">
 		
 <!--<div style=' float: left;text-align: left;'>-->
 <div class=" colum column-left">
-<img alt="Barcelona" src="img/bcn.png">
+<a href="resultado.html">
+<img alt="Barcelona" src="img/bcn.png"></a>
 </br>
 <p>Barcelona</p>
 </div>
 
 <!--<div style=' float: left;  text-align: left;'>-->
 <div class="colum column-center">
-<img alt="Madrid" src="img/madrid.png">
+<a href="resultado.html">
+<img alt="Madrid" src="img/madrid.png"></a>
 </br>
 <p>Madrid</p>
 </div>
 
 <!--<div style='float: right;text-align: left;'>-->
 <div class="colum column-right">
-<img alt="Londres" src="img/londres.png">
+<a href="resultado.html">
+<img alt="Londres" src="img/londres.png"></a>
 </br>
 <p>Londres</p>
 </div>

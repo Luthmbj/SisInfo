@@ -7,8 +7,8 @@
 	<meta name="author" content="Blah" />
 	<title>Viaggio, comparador de viajes</title>
  
-    <link rel="stylesheet" href="css/style.css">
-    
+        <link rel="stylesheet" href="css/style.css">
+        
 <!-- RESPONSIVE -->
 <script src="css/jquery.min.js"></script>
 <script>
@@ -30,27 +30,9 @@ $(window).resize(function(){
     }
 });
 </script> 
-<!-- PESTAÑAS -->
-<script>
-function openCity(evt, cityName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(cityName).style.display = "block";
-    evt.currentTarget.className += " active";
-}
-</script>
-
 </head>
+
 <body>
-<!-- Contenido centra -->
-<div class="contUser">
 <!-- Menú cabecera --> 
 <header id="main-header">
 		
@@ -67,39 +49,53 @@ function openCity(evt, cityName) {
  
 </header>
     
-<!-- Contenido central -->
 <div class="contUser">
 
-<div class="tab">
-<button class="tablinks" onclick="openCity(event, 'Hoteles')">Hoteles</button>
-<button class="tablinks" onclick="openCity(event, 'Vuelos')">Vuelos</button>
-<button class="tablinks" onclick="openCity(event, 'Coches')">Coches</button>
-<button class="tablinks" onclick="openCity(event, 'Datos')">Mis Datos</button>
+<div class="cabRes">
+<h2>Resultados </h2>
+<p>En **** del **/**/**** a **/**/***, para * persona/s en * habitación/es</p>
 </div>
 
-<div id="Hoteles" class="tabcontent">
-  <h3>Hoteles</h3>
-  <p>No tienes ninguna búsqueda guardada</p>
+<div class="contRes">
+<div class="cImg"> <img src="img/nhhoteles.jpg"> </div>
+
+<div class="cDatos">
+Nombre del hotel
+<br />
+Precio
+<br />
+web
+</div>
 </div>
 
-<div id="Vuelos" class="tabcontent">
-  <h3>Vuelos</h3>
-  <p>No tienes ninguna búsqueda guardada</p>
+<div class="contRes">
+<div class="cImg"> <img src="img/nhhoteles.jpg"> </div>
+
+<div class="cDatos">
+Nombre del hotel
+<br />
+Precio
+<br />
+web
 </div>
-<div id="Coches" class="tabcontent">
-  <h3>Coches</h3>
-  <p>No tienes ninguna búsqueda guardada</p>
-</div> 
-
-<div id="Datos" class="tabcontent">
-  <h3>Mis Datos</h3>
-  <p>No tienes ninguna búsqueda guardada</p>
-</div> 
-
-
 </div>
 
+<div class="contRes">
+<div class="cImg"> <img src="img/nhhoteles.jpg"> </div>
 
+<div class="cDatos">
+Nombre del hotel
+<br />
+Precio
+<br />
+web
+</div>
+</div>
+
+
+</div>       
+
+    
  <!-- PIE DE PÁGINA -->     
 <footer id="main-footer">
 
@@ -133,5 +129,7 @@ function openCity(evt, cityName) {
 
 </div>
 
+
+</div>
 </body>
 </html>
