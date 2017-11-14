@@ -297,6 +297,22 @@ div.tab button.active {
 	float:left;
 }
 
+.cDatos a{
+	float:inherit;
+	margin-right:10%;
+	padding: 7px 10px  7px  10px ;
+	text-align:center;
+	line-height:2em;
+	width:auto;
+	color:white; 
+	background-color:#007096;
+	font-family: Arial, Helvetica, sans-serif;
+	border:0; 
+	text-decoration:underline;
+	border-radius: 4px;
+	height:auto;
+}
+
 
 /***********ORDENADOR**************/
 /************ 
