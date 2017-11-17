@@ -29,23 +29,23 @@ $(window).resize(function(){
         menu.removeAttr('style');
     }
 });
-</script> 
+</script>
 
 <!-- Comprobar si las claves son iguales -->
 <script>
 function comprobarClave(){
-    clave1 = document.f1.clave1.value
-    clave2 = document.f1.clave2.value
+    clave1 = document.datos.clave1.value
+    clave2 = document.datos.clave2.value
 
 	if (clave1==""){
-		alert("Debe rellenar los dos campos contraseÃ±a...\n")
+		alert("Debe rellenar los dos campos contraseña...\n")
 	   return false;
 	}
     else if ((clave1 == clave2)) {
 		alert("Todo correcto. Falta mandar el formulario al servidor...\n")
 		return true;
 	}
-	//AquÃ­ en vez del alert serÃ­a mandar los datos al servidor
+	//Aquí en vez del alert sería mandar los datos al servidor
     else{
        alert("Las dos claves son distintas...\n")
 	   return false;
@@ -57,7 +57,7 @@ function comprobarClave(){
 <!-- comrobar si el email del f1 tiene formato correcto -->
 <script>
 function comprobarEmail(){
-	e = document.f1.emailreg.value
+	e = document.datos.emailreg.value
 	var emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
 	if (emailRegex.test(e)) {
       comprobarClave();
@@ -68,25 +68,10 @@ function comprobarEmail(){
 }
 </script>
 
-<!-- comrobar si el email del f2 tiene formato correcto -->
-<script>
-function comprobarEmail2(){
-	e2 =document.f2.emailLog.value
-	var emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
-	if (!emailRegex.test(e2)) {
-       alert("Email con formato incorrecto...\n")
-	   return false;
-    }
-	return true;
-}
-</script>
-
-
-
-<!-- FunciÃ³n que comprueba si una fecha estÃ¡ en formato dd/mm/aaaa y es anterior a la actual -->
+<!-- Función que comprueba si una fecha está en formato dd/mm/aaaa y es anterior a la actual -->
 <script>
 function validaFechaDDMMAAAA(){
-	var fecha = document.f1.fN.value;
+	var fecha = document.datos.fN.value;
 	var dtCh= "/";
 	var minYear=1900;
 	var hoy = new Date();
@@ -170,13 +155,11 @@ function validaFechaDDMMAAAA(){
 	}
 }
 </script>
-
-
+ 
 </head>
 
-
 <body>
-<!-- MenÃº cabecera --> 
+<!-- Menú cabecera --> 
 <header id="main-header">
 		
 <a href="index.html"><img alt="Home" id="logo-header" src="img/logo.png"></a>
@@ -192,76 +175,49 @@ function validaFechaDDMMAAAA(){
  
 </header>
     
-<!-- Formularios -->
-<div class="contLog" id="centro">
+<div class="contUser">
 
-<div class="formReg" id="registro">
-<h3> Â¿Eres nuevo?Â¡RegÃ­strate! </h3>
-<form class="formLog" name="f1">
-<!-- Campos a 2 columnas -->
-<div class="colsFormL">
-				<label for="nombre">Nombre:</label> 
-				<br>
-				<input id="nombre" name="Nombre" type="text" placeholder="Nombre" required />
-                <br>
-                <label for="date">Fecha de nacimiento:</label> 
-        		<br>
-				<input name="fN" id="date" type="text" placeholder="dd/mm/aaaa" required>
-      			<br>
-                <label for="contra">ContraseÃ±a: </label>
-				<br>
-				<input id="clave" type="password" name="clave1" required>
-				<br><br>
-</div>
-<div class="colsFormR">
-     			<label for="apel">Apellidos: </label>
-      			<br>
-				<input id="apel" type="text" placeholder="Apellidos"  required>
-                <br>
-                <label for="email">Correo electrÃ³nico: </label>
-				<br>
-				<input name="emailreg" id="email" type="text" placeholder="Email" required>
-      			<br>
-                <label for="repcon">Repetir contraseÃ±a: </label>
-				<br>
-				<input id="repcon" type="password" name="clave2" required>
-                <br><br>
+<div class="cabRes">
+<h2>Mis Datos </h2>
+<p>Puede editar todos o alguno de los datos</p>
 </div>
 
-<div>
-<button class="boton bLog" name="Registrarse" onClick="validaFechaDDMMAAAA()">Registrarse</button>
-<br>
 
-</div>
-			</form>
-		</div>
-       
-        
-<div id="inicio" class="formReg"> <!-- antes tb  style='float:left;width:185px;height:230px;padding:10px;margin:0 0 0 80px;background-color:lightblue;' -->
-<h3>  Acceder a mi cuenta </h3>
-<form class="formLog" name="f2">
-<div class="colsFormL">
-<label for="user">Usuario:</label>
-<br>
-<input name="emailLog" id="e" type="text" placeholder="email" required>
+<form style="text-align:left; padding-left:15%;" name="datos" action="">
+
+<label for="nombre">Nombre: </label> 
+<input id="nombre" name="Nombre" type="text" placeholder="Nombre" required />
+ <br><br>
+<label for="apel">Apellidos: </label>
+<input id="apel" type="text" placeholder="Apellidos"  required>
 <br><br>
-</div>
-
-<div class="colsFormR">
-<label for="pass">ContraseÃ±a:</label>
-<br>
-<input name="pass" type="password" required>
+<label for="date">Fecha de nacimiento: </label> 
+<input name="fN" id="date" type="text" placeholder="dd/mm/aaaa" required>
 <br><br>
-</div>
-               
-<div>
-<button class="boton bLog" name="submit" onClick="comprobarEmail2()">Iniciar sesiÃ³n</button>
-</div>
+<label for="email">Correo electrónico: </label>
+<input name="emailreg" id="email" type="text" placeholder="Email" required>
+<br><br>
+<label for="contra">Contraseña: </label>
+<input id="clave" type="password" name="clave1" required>
+<br><br>
+<label for="repcon">Repetir contraseña: </label>
+<input id="repcon" type="password" name="clave2" required>
+<br><br>
+<button class="boton bLog" style=" margin-right:5%; width:auto; background-color:#FB751C; color:#333" name="Guardar">Cancelar</button>
+<button class="boton bLog" style=" width:auto; background-color:#9FEA15; color:#333" name="Guardar" onClick="validaFechaDDMMAAAA()">Guardar datos</button>
+
+
 </form>
-		</div>
-	</div>
+
+
+
+
+
+
+</div>       
+
     
- <!-- PIE DE PÃGINA -->     
+ <!-- PIE DE PÁGINA -->     
 <footer id="main-footer">
 
 <div id='footer2'  class="colum2 column-left">
@@ -285,12 +241,15 @@ function validaFechaDDMMAAAA(){
 <div id='footer4'  class="colum2 column-right">
   <p align="left"><strong>Seguridad</strong>
   </br>Privacidad
-  </br>TÃ©rminos y condiciones
+  </br>Términos y condiciones
   </br>Aviso Legal
   <p align="left">&copy; 2017 Viaggio</p>
   </br>
   </p>
 </div>
+
+</div>
+
 
 </div>
 </body>

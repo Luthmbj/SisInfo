@@ -6,9 +6,9 @@
 	<meta name="description" content="Comparador" />
 	<meta name="author" content="Blah" />
 	<title>Viaggio, comparador de viajes</title>
- 
+
         <link rel="stylesheet" href="css/style.css">
-        
+
 <!-- RESPONSIVE -->
 <script src="css/jquery.min.js"></script>
 <script>
@@ -29,7 +29,7 @@ $(window).resize(function(){
         menu.removeAttr('style');
     }
 });
-</script> 
+</script>
 
 <!-- Comprobar si las claves son iguales -->
 <script>
@@ -50,7 +50,7 @@ function comprobarClave(){
        alert("Las dos claves son distintas...\n")
 	   return false;
 	}
-} 
+}
 </script>
 
 
@@ -93,7 +93,7 @@ function validaFechaDDMMAAAA(){
 	var maxDay=hoy.getDate();
 	var maxMonth=hoy.getMonth()+1;
 	var maxYear=hoy.getFullYear();
-	
+
 	function isInteger(s){
 		var i;
 		for (i = 0; i < s.length; i++){
@@ -142,13 +142,13 @@ function validaFechaDDMMAAAA(){
 			return false
 		}
 		if (strMonth.length<1 || month<1 || month>12){
-			return false	
+			return false
 		}
 		if (strDay.length<1 || day<1 || day>31 || (month==2 && day>daysInFebruary(year)) || day > daysInMonth[month]){
-			return false	
+			return false
 		}
 		if (strYear.length != 4 || year==0 || year<minYear || year>maxYear){
-			return false	
+			return false
 		}
 		if (dtStr.indexOf(dtCh,pos2+1)!=-1 || isInteger(stripCharsInBag(dtStr, dtCh))==false){
 			return false
@@ -159,7 +159,7 @@ function validaFechaDDMMAAAA(){
 
 		return true;
 	}
-	
+
 	if(isDate(fecha)){
 		comprobarEmail();//comprobarClave();
 		/*return true;*/
@@ -176,9 +176,9 @@ function validaFechaDDMMAAAA(){
 
 
 <body>
-<!-- Menú cabecera --> 
+<!-- Menú cabecera -->
 <header id="main-header">
-		
+
 <a href="index.html"><img alt="Home" id="logo-header" src="img/logo.png"></a>
 <nav class="clearfix">
 	<ul class="clearfix">
@@ -189,9 +189,9 @@ function validaFechaDDMMAAAA(){
 	</ul>
 <a href="#" id="pull"></a>
  </nav>
- 
+
 </header>
-    
+
 <!-- Formularios -->
 <div class="contLog" id="centro">
 
@@ -199,12 +199,13 @@ function validaFechaDDMMAAAA(){
 <h3> ¿Eres nuevo?¡Regístrate! </h3>
 <form class="formLog" name="f1">
 <!-- Campos a 2 columnas -->
+
 <div class="colsFormL">
-				<label for="nombre">Nombre:</label> 
+				<label for="nombre">Nombre:</label>
 				<br>
 				<input id="nombre" name="Nombre" type="text" placeholder="Nombre" required />
                 <br>
-                <label for="date">Fecha de nacimiento:</label> 
+                <label for="date">Fecha de nacimiento:</label>
         		<br>
 				<input name="fN" id="date" type="text" placeholder="dd/mm/aaaa" required>
       			<br>
@@ -235,33 +236,75 @@ function validaFechaDDMMAAAA(){
 </div>
 			</form>
 		</div>
-       
-        
+
+		<%
+			String errorCorreo="";
+			String errorPass="";
+			Map<String, String> errors =(Map<String, String>) request.getAttribute("errors");
+			if (errors != null) {
+				String errorHeader = "<font color=\"red\" font size=1><b>";
+				String errorFooter = "</b></font>";
+				if (errors.containsKey("errorCorreo")) {
+					errorCorreo= errorHeader + errors.get("errorCorreo") + errorFooter;
+				}
+				if (errors.containsKey("errorPass")) {
+					errorPass= errorHeader + errors.get("errorPass") + errorFooter;
+				}
+			}
+			Cookie[] cookies = request.getCookies();
+
+			String userId = null;
+			for(Cookie cookie : cookies){
+				if("correo".equals(cookie.getName())){
+					userId = cookie.getValue();
+				}
+			}
+		%>
+
+
 <div id="inicio" class="formReg"> <!-- antes tb  style='float:left;width:185px;height:230px;padding:10px;margin:0 0 0 80px;background-color:lightblue;' -->
-<h3>  Acceder a mi cuenta </h3>
-<form class="formLog" name="f2">
-<div class="colsFormL">
-<label for="user">Usuario:</label>
-<br>
-<input name="emailLog" id="e" type="text" placeholder="email" required>
-<br><br>
+	<h3>  Acceder a mi cuenta </h3>
+	<form action="InicioSesionServlet" method="post">
+		<div class="colsFormL">
+			<%if(userId==null){
+				%>
+				<label for="user">Usuario:</label><input id="user" type="text" name="email"/> <%=errorCorreo%>
+				<%
+			}else{
+				%>
+				<label for="user">Usuario:</label><input id="user" type="text" name="email" value="<%=userId %>"/>
+				<%
+			}
+			%>
+			<br>
+			<input name="emailLog" id="e" type="text" placeholder="email" required>
+				<br><br>
+		</div>
+
+		<div class="colsFormR">
+			<%if(userId==null){
+				%>
+				<label for="pass">Contraseña:</label><input id="pass" type="password" /> <%=errorPass%>
+				<%
+			}else{
+				%>
+				<label for="pass">Contraseña:</label><input id="pass" type="password" value="<%=userPass%>" />
+				<%
+			}
+			%>
+			<br>
+			<input name="pass" type="password" required>
+			<br><br>
+		</div>
+			<%=errorUsuario %>
+		<div>
+			<button class="boton bLog" name="submit" onClick="comprobarEmail2()">Iniciar sesión</button>
+		</div>
+	</form>
+</div>
 </div>
 
-<div class="colsFormR">
-<label for="pass">Contraseña:</label>
-<br>
-<input name="pass" type="password" required>
-<br><br>
-</div>
-               
-<div>
-<button class="boton bLog" name="submit" onClick="comprobarEmail2()">Iniciar sesión</button>
-</div>
-</form>
-		</div>
-	</div>
-    
- <!-- PIE DE PÁGINA -->     
+ <!-- PIE DE PÁGINA -->
 <footer id="main-footer">
 
 <div id='footer2'  class="colum2 column-left">

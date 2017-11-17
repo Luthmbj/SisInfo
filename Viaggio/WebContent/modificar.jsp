@@ -6,9 +6,9 @@
 	<meta name="description" content="Comparador" />
 	<meta name="author" content="Blah" />
 	<title>Viaggio, comparador de viajes</title>
- 
+
         <link rel="stylesheet" href="css/style.css">
-        
+
 <!-- RESPONSIVE -->
 <script src="css/jquery.min.js"></script>
 <script>
@@ -29,35 +29,35 @@ $(window).resize(function(){
         menu.removeAttr('style');
     }
 });
-</script> 
+</script>
 
 <!-- Comprobar si las claves son iguales -->
 <script>
 function comprobarClave(){
-    clave1 = document.f1.clave1.value
-    clave2 = document.f1.clave2.value
+    clave1 = document.datos.clave1.value
+    clave2 = document.datos.clave2.value
 
 	if (clave1==""){
-		alert("Debe rellenar los dos campos contraseña...\n")
+		alert("Debe rellenar los dos campos contrase�a...\n")
 	   return false;
 	}
     else if ((clave1 == clave2)) {
 		alert("Todo correcto. Falta mandar el formulario al servidor...\n")
 		return true;
 	}
-	//Aquí en vez del alert sería mandar los datos al servidor
+	//Aqu� en vez del alert ser�a mandar los datos al servidor
     else{
        alert("Las dos claves son distintas...\n")
 	   return false;
 	}
-} 
+}
 </script>
 
 
 <!-- comrobar si el email del f1 tiene formato correcto -->
 <script>
 function comprobarEmail(){
-	e = document.f1.emailreg.value
+	e = document.datos.emailreg.value
 	var emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
 	if (emailRegex.test(e)) {
       comprobarClave();
@@ -68,32 +68,17 @@ function comprobarEmail(){
 }
 </script>
 
-<!-- comrobar si el email del f2 tiene formato correcto -->
-<script>
-function comprobarEmail2(){
-	e2 =document.f2.emailLog.value
-	var emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
-	if (!emailRegex.test(e2)) {
-       alert("Email con formato incorrecto...\n")
-	   return false;
-    }
-	return true;
-}
-</script>
-
-
-
-<!-- Función que comprueba si una fecha está en formato dd/mm/aaaa y es anterior a la actual -->
+<!-- Funci�n que comprueba si una fecha est� en formato dd/mm/aaaa y es anterior a la actual -->
 <script>
 function validaFechaDDMMAAAA(){
-	var fecha = document.f1.fN.value;
+	var fecha = document.datos.fN.value;
 	var dtCh= "/";
 	var minYear=1900;
 	var hoy = new Date();
 	var maxDay=hoy.getDate();
 	var maxMonth=hoy.getMonth()+1;
 	var maxYear=hoy.getFullYear();
-	
+
 	function isInteger(s){
 		var i;
 		for (i = 0; i < s.length; i++){
@@ -142,13 +127,13 @@ function validaFechaDDMMAAAA(){
 			return false
 		}
 		if (strMonth.length<1 || month<1 || month>12){
-			return false	
+			return false
 		}
 		if (strDay.length<1 || day<1 || day>31 || (month==2 && day>daysInFebruary(year)) || day > daysInMonth[month]){
-			return false	
+			return false
 		}
 		if (strYear.length != 4 || year==0 || year<minYear || year>maxYear){
-			return false	
+			return false
 		}
 		if (dtStr.indexOf(dtCh,pos2+1)!=-1 || isInteger(stripCharsInBag(dtStr, dtCh))==false){
 			return false
@@ -159,7 +144,7 @@ function validaFechaDDMMAAAA(){
 
 		return true;
 	}
-	
+
 	if(isDate(fecha)){
 		comprobarEmail();//comprobarClave();
 		/*return true;*/
@@ -171,14 +156,12 @@ function validaFechaDDMMAAAA(){
 }
 </script>
 
-
 </head>
 
-
 <body>
-<!-- Menú cabecera --> 
+<!-- Men� cabecera -->
 <header id="main-header">
-		
+
 <a href="index.html"><img alt="Home" id="logo-header" src="img/logo.png"></a>
 <nav class="clearfix">
 	<ul class="clearfix">
@@ -189,79 +172,106 @@ function validaFechaDDMMAAAA(){
 	</ul>
 <a href="#" id="pull"></a>
  </nav>
- 
+
 </header>
-    
-<!-- Formularios -->
-<div class="contLog" id="centro">
 
-<div class="formReg" id="registro">
-<h3> ¿Eres nuevo?¡Regístrate! </h3>
-<form class="formLog" name="f1">
-<!-- Campos a 2 columnas -->
-<div class="colsFormL">
-				<label for="nombre">Nombre:</label> 
-				<br>
-				<input id="nombre" name="Nombre" type="text" placeholder="Nombre" required />
-                <br>
-                <label for="date">Fecha de nacimiento:</label> 
-        		<br>
-				<input name="fN" id="date" type="text" placeholder="dd/mm/aaaa" required>
-      			<br>
-                <label for="contra">Contraseña: </label>
-				<br>
-				<input id="clave" type="password" name="clave1" required>
-				<br><br>
-</div>
-<div class="colsFormR">
-     			<label for="apel">Apellidos: </label>
-      			<br>
-				<input id="apel" type="text" placeholder="Apellidos"  required>
-                <br>
-                <label for="email">Correo electrónico: </label>
-				<br>
-				<input name="emailreg" id="email" type="text" placeholder="Email" required>
-      			<br>
-                <label for="repcon">Repetir contraseña: </label>
-				<br>
-				<input id="repcon" type="password" name="clave2" required>
-                <br><br>
+<div class="contUser">
+
+<div class="cabRes">
+<h2>Mis Datos </h2>
+<p>Puede editar todos o alguno de los datos</p>
 </div>
 
-<div>
-<button class="boton bLog" name="Registrarse" onClick="validaFechaDDMMAAAA()">Registrarse</button>
-<br>
+<%
+	String errorNombre="";
+	String errorApel="";
+	String errorFecha="";
+	String errorMail="";
+	String errorPass1="";
+	String errorPass2="";
+	Map<String, String> errors =(Map<String, String>) request.getAttribute("errors");
+	if (errors != null) {
+		String errorHeader = "<font color=\"red\" font size=1><b>";
+		String errorFooter = "</b></font>";
+		if (errors.containsKey("errorNombre")) {
+			errorNombre= errorHeader + errors.get("errorNombre") + errorFooter;
+		}
+		if (errors.containsKey("errorApel")) {
+			errorApel= errorHeader + errors.get("errorApel") + errorFooter;
+		}
+		if (errors.containsKey("errorFecha")) {
+			errorFecha= errorHeader + errors.get("errorFecha") + errorFooter;
+		}
+		if (errors.containsKey("errorMail")) {
+			errorMail= errorHeader + errors.get("errorMail") + errorFooter;
+		}
+		if (errors.containsKey("errorPass1")) {
+			errorPass1= errorHeader + errors.get("errorPass1") + errorFooter;
+		}
+		if (errors.containsKey("errorPass2")) {
+			errorPass2= errorHeader + errors.get("errorPass2") + errorFooter;
+		}
+	}
+	Cookie[] cookies = request.getCookies();
 
-</div>
-			</form>
-		</div>
-       
-        
-<div id="inicio" class="formReg"> <!-- antes tb  style='float:left;width:185px;height:230px;padding:10px;margin:0 0 0 80px;background-color:lightblue;' -->
-<h3>  Acceder a mi cuenta </h3>
-<form class="formLog" name="f2">
-<div class="colsFormL">
-<label for="user">Usuario:</label>
-<br>
-<input name="emailLog" id="e" type="text" placeholder="email" required>
-<br><br>
-</div>
+	String userId = null;
+	for(Cookie cookie : cookies){
+		if("email".equals(cookie.getName())){	//como se llaman las cosas que he de coger de la cookie?
+			userId = cookie.getValue();
+		}
+	}
+%>
 
-<div class="colsFormR">
-<label for="pass">Contraseña:</label>
-<br>
-<input name="pass" type="password" required>
-<br><br>
-</div>
-               
-<div>
-<button class="boton bLog" name="submit" onClick="comprobarEmail2()">Iniciar sesión</button>
-</div>
+<form style="text-align:left; padding-left:15%;" name="datos" action="">
+	<%if(userId==null){
+		%>
+		<label for="nombre">Nombre: </label><input id="nombre" name="Nombre" type="text" placeholder="Nombre" required><%=errorNombre%>
+		<br><br>
+		<label for="apel">Apellidos: </label><input id="apel" type="text" placeholder="Apellidos"  required> <%=errorApel%>
+		<br><br>
+		<label for="date">Fecha de nacimiento: </label> <input name="fN" id="date" type="text" placeholder="dd/mm/aaaa" required> <%=errorFecha%>
+		<br><br>
+		<label for="email">Correo electr�nico: </label><input name="emailreg" id="email" type="text" placeholder="Email" required> <%=errorMail%>
+		<br><br>
+		<label for="contra">Contrase�a: </label><input id="clave" type="password" name="clave1" required> <%=errorPass1%>
+		<br><br>
+		<label for="repcon">Repetir contrase�a: </label><input id="repcon" type="password" name="clave2" required> <%=errorPass2%>
+		<%
+	}else{
+		%>
+		<label for="nombre">Nombre: </label><input id="nombre" name="Nombre" type="text" placeholder="Nombre" required value="<%=userId %>">
+		<br><br>
+		<label for="apel">Apellidos: </label><input id="apel" type="text" placeholder="Apellidos"  required value="<%=userId%>">
+		<br><br>
+		<label for="date">Fecha de nacimiento: </label> <input name="fN" id="date" type="text" placeholder="dd/mm/aaaa" required value="<%=userId%>">
+		<br><br>
+		<label for="email">Correo electr�nico: </label><input name="emailreg" id="email" type="text" placeholder="Email" required value="<%=userId%>">
+		<br><br>
+		<label for="contra">Contrase�a: </label><input id="clave" type="password" name="clave1" required value="<%=userId%>">
+		<br><br>
+		<label for="repcon">Repetir contrase�a: </label><input id="repcon" type="password" name="clave2" required value="<%=userId%>">
+		<%
+	}
+	%>
+	<br><br>
+
+
+
+<button class="boton bLog" style=" margin-right:5%; width:auto; background-color:#FB751C; color:#333" name="Guardar">Cancelar</button>
+<button class="boton bLog" style=" width:auto; background-color:#9FEA15; color:#333" name="Guardar" onClick="validaFechaDDMMAAAA()">Guardar datos</button>
+
+
 </form>
-		</div>
-	</div>
-    
- <!-- PIE DE PÁGINA -->     
+
+
+
+
+
+
+</div>
+
+
+ <!-- PIE DE P�GINA -->
 <footer id="main-footer">
 
 <div id='footer2'  class="colum2 column-left">
@@ -285,12 +295,15 @@ function validaFechaDDMMAAAA(){
 <div id='footer4'  class="colum2 column-right">
   <p align="left"><strong>Seguridad</strong>
   </br>Privacidad
-  </br>Términos y condiciones
+  </br>T�rminos y condiciones
   </br>Aviso Legal
   <p align="left">&copy; 2017 Viaggio</p>
   </br>
   </p>
 </div>
+
+</div>
+
 
 </div>
 </body>
