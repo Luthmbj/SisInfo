@@ -48,14 +48,18 @@ public class BusquedaServlet extends HttpServlet {
 
 		//-----------------------------
 		try{	
-			WebFacade fachada = new WebFacade();
-			fachada.accesoBusqueda(new BusquedaVO(login,lugar,fInicio,fFin,nPersonas),"insertar");
+			BusquedaVO busqueda = new BusquedaVO(login,lugar,fInicio,fFin,nHabitaciones,nPersonas);
+			if (login != "anonimo"){
+				WebFacade fachada = new WebFacade();
+				fachada.accesoBusqueda(busqueda,"insertar");
+			}
 			LinkedList<ResultadoVO> resultados = new LinkedList<ResultadoVO>();
 			resultados.add(new ResultadoVO("Hotel Maravilla",75.30,foto));
 			resultados.add(new ResultadoVO("Hotel Aragón",70.00,foto));
 			resultados.add(new ResultadoVO("Hotel España",50.46,foto));
 			resultados.add(new ResultadoVO("Hotel aASDDSF",66.66,foto));
 			response.setAttribute("resultados",resultados);
+			response.setAttribute("busqueda",busqueda);
 			response.sendRedirect("resultado.jsp");
 		}catch (Exception e){
 			e.printStackTrace(System.err);

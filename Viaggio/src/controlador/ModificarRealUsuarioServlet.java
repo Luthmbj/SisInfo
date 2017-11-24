@@ -145,14 +145,10 @@ public class ModificarRealUsuarioServlet extends HttpServlet {
 				WebFacade fachada = new WebFacade();
 				fachada.accesoUsuario(usuario,"modificar");
 				Cookie emailC = new Cookie("usuario",usuario.getEmail());
-					Cookie nombreC = new Cookie("nombre",usuario.getNombre());
-					Cookie apellidosC = new Cookie("apellidos",usuario.getApellidos());
-					Cookie fechaC = new Cookie("fecha",usuario.getFecha());
+				Cookie nombreC = new Cookie("nombre",usuario.getNombre());
 				
-					response.addCookie(emailC);
-					response.addCookie(nombreC);
-					response.addCookie(apellidosC);
-					response.addCookie(fechaC);
+				response.addCookie(emailC);
+				response.addCookie(nombreC);
 				response.sendRedirect("usuario.jsp");
 			}catch (Exception e){
 				e.printStackTrace(System.err);				
