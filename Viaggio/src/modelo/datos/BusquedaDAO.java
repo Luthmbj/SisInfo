@@ -35,18 +35,17 @@ public interface BusquedaDAO {
         }                
     } 
 	
-	public BusquedaVO encontrarDatosBusqueda (String usuario, int id, Connection connection){     
-    	BusquedaVO BusquedaVO = null;
+	public LinkedList<BusquedaVO> encontrarDatosBusqueda (String usuario, Connection connection){     
+		LinkedList<BusquedaVO> lista = new LinkedList<BusquedaVO>();
     	try{
             /* Create "preparedStatement". */
             String queryString = "SELECT finicio,	ffin,	lugar " +
-            		" nhabitacion,	npersonas FROM Busqueda WHERE  usuario = ? AND id = ?";                    
+            		" nhabitacion,	npersonas FROM Busqueda WHERE  usuario = ? ORDER BY id DESC LIMIT 10";                    
             PreparedStatement preparedStatement = 
                 connection.prepareStatement(queryString);
             
             /* Fill "preparedStatement". */    
             preparedStatement.setString(1, usuario);
-			preparedStatement.setString(2, id);
                    
             /* Execute query. */                    
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -54,33 +53,32 @@ public interface BusquedaDAO {
             if (!resultSet.first()) {
                 throw new SQLException( "Error: Búsqueda no encontrada");
             }
-            
-            /* Execute query. */                    
-            String finicio = resultSet.getString(1);
-            String ffin = resultSet.getString(2);
-            String lugar = resultSet.getString(3);
-            String nhabitaciones = resultSet.getString(4);
-			String npersonas = resultSet.getString(5);
-              
-            BusquedaVO = new BusquedaVO (finicio,ffin,lugar,
-									nhabitaciones, npersonas);
+			while(resultSet.next()){
+				String finicio = resultSet.getString(1);
+				String ffin = resultSet.getString(2);
+				String lugar = resultSet.getString(3);
+				String nhabitaciones = resultSet.getString(4);
+				String npersonas = resultSet.getString(5);
+				
+				lista.add(new BusquedaVO(usuario,finicio,ffin,lugar,nhabitaciones, npersonas));
+			}
+
                 
         } catch (Exception e) {
             e.printStackTrace(System.err);
         }
-    	return BusquedaVO;
+    	return lista;
     } 
 	
-    public void borrarBusqueda(String usuario, int id, Connection connection) {
+    public void borrarBusqueda(String usuario, Connection connection) {
 		try {
 			 /* Create "preparedStatement". */
-			String queryString = "DELETE FROM Busqueda WHERE usuario = ? AND id = ?";                    
+			String queryString = "DELETE FROM Busqueda WHERE usuario = ?";                    
             PreparedStatement preparedStatement = 
                 connection.prepareStatement(queryString);
 			
 			/* Fill "preparedStatement". */  
 			preparedStatement.setString(1, usuario);
-			preparedStatement.setString(2, id);
 			
 			/* Execute query. */                    
             int deletedRows = preparedStatement.executeQuery();

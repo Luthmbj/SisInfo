@@ -240,22 +240,22 @@ function validaFechaDDMMAAAA(){
 		<%
 			String errorCorreo="";
 			String errorPass="";
-			Map<String, String> errors =(Map<String, String>) request.getAttribute("errors");
+			Map<String, String> errors =(Map<String, String>) request.getAttribute("errores");
 			if (errors != null) {
 				String errorHeader = "<font color=\"red\" font size=1><b>";
 				String errorFooter = "</b></font>";
-				if (errors.containsKey("errorCorreo")) {
-					errorCorreo= errorHeader + errors.get("errorCorreo") + errorFooter;
+				if (errors.containsKey("login")) {
+					errorCorreo= errorHeader + errors.get("login") + errorFooter;
 				}
-				if (errors.containsKey("errorPass")) {
-					errorPass= errorHeader + errors.get("errorPass") + errorFooter;
+				if (errors.containsKey("password")) {
+					errorPass= errorHeader + errors.get("password") + errorFooter;
 				}
 			}
 			Cookie[] cookies = request.getCookies();
 
 			String userId = null;
 			for(Cookie cookie : cookies){
-				if("correo".equals(cookie.getName())){
+				if("usuario".equals(cookie.getName())){
 					userId = cookie.getValue();
 				}
 			}
@@ -288,7 +288,7 @@ function validaFechaDDMMAAAA(){
 				<%
 			}else{
 				%>
-				<label for="pass">Contraseña:</label><input id="pass" type="password" value="<%=userPass%>" />
+				<label for="pass">Contraseña:</label><input id="pass" type="password" value="<%=""%>" />
 				<%
 			}
 			%>

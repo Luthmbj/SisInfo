@@ -35,7 +35,7 @@ public interface HotelDAO {
         try{
             /* Create "preparedStatement". */
             String queryString = "UPDATE Hotel " +
-                "SET nombre = ? WHERE  email = ?)";                    
+                "SET nombre = ? WHERE  url = ?)";                    
             PreparedStatement preparedStatement = 
                 connection.prepareStatement(queryString);
             
@@ -54,8 +54,8 @@ public interface HotelDAO {
         }                
     } 
 	
-	public hotelVO encontrarDatosHotel (String url, Connection connection){     
-    	hotelVO hotelVO = null;
+	public HotelVO encontrarDatosHotel (String url, Connection connection){     
+    	HotelVO hotelVO = null;
     	try{
             /* Create "preparedStatement". */
             String queryString = "SELECT nombre FROM Hotel WHERE  url = ?";                    
@@ -81,6 +81,40 @@ public interface HotelDAO {
             e.printStackTrace(System.err);
         }
     	return hotelVO;
+    } 
+	
+	public LinkedList<HotelVO> encontrarTodosHotel (Connection connection){     
+    	LinkedList<HotelVO> lista = new LinkedList<HotelVO>();
+    	try{
+            /* Create "preparedStatement". */
+            String queryString = "SELECT * FROM Hotel";                    
+            PreparedStatement preparedStatement = 
+                connection.prepareStatement(queryString);
+            
+            /* Fill "preparedStatement". */    
+            preparedStatement.setString(1, url);
+                   
+            /* Execute query. */                    
+            ResultSet resultSet = preparedStatement.executeQuery();
+               
+            if (!resultSet.first()) {
+                throw new SQLException( "Error: Hotel no encontrado");
+            }
+            
+            /* Execute query. */    
+			while(resultSet.next()){
+				String url = resultSet.getString(1);
+				String nombre = resultSet.getString(2);
+				lista.add(new HotelVO(url,nombre));
+			}
+			if (lista.isEmpty()){
+				throw new Exception("Sin resultados");
+			}
+                
+        } catch (Exception e) {
+            e.printStackTrace(System.err);
+        }
+    	return lista;
     } 
 	
     public void borrarHotel(String url, Connection connection) {
