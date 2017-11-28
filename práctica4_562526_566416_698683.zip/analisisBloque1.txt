@@ -1,0 +1,72 @@
+*******************
+* Análisis Lucene *
+*******************
+
+------------
+Resultados de StandardAnalyzer:
+------------
+
+Query: tomcat, found 3 hits.
+1. .\ficheros/dos.txt	0.68154424
+2. .\ficheros/dos.txt	0.68154424
+3. .\ficheros/dos.txt	0.5679535
+Query: tomcat OR lucene, found 4 hits.
+1. .\ficheros/dos.txt	0.2747995
+2. .\ficheros/dos.txt	0.2747995
+3. .\ficheros/dos.txt	0.22899957
+4. .\ficheros/uno.txt	0.14149219
+Query: “Lucene”, found 4 hits.
+1. .\ficheros/uno.txt	0.47852567
+2. .\ficheros/uno.txt	0.47852567
+3. .\ficheros/uno.txt	0.3987714
+4. .\ficheros/tres.txt	0.21339436
+Query: of, found 0 hits.
+Query: tomcat*, found 3 hits.
+1. .\ficheros/dos.txt	1.0
+2. .\ficheros/dos.txt	1.0
+3. .\ficheros/dos.txt	1.0
+Query: jakarta, found 0 hits.
+Query: Lucene -apache, found 0 hits.
+
+
+------------
+Resultados de SimpleAnalyzer:
+------------
+
+Query: tomcat, found 4 hits.
+1. .\ficheros/dos.txt	0.7025038
+2. .\ficheros/dos.txt	0.7025038
+3. .\ficheros/dos.txt	0.58541983
+4. .\ficheros/dos.txt	0.58541983
+Query: tomcat OR lucene, found 4 hits.
+1. .\ficheros/dos.txt	0.28393495
+2. .\ficheros/dos.txt	0.28393495
+3. .\ficheros/dos.txt	0.23661244
+4. .\ficheros/dos.txt	0.23661244
+Query: “Lucene”, found 4 hits.
+1. .\ficheros/uno.txt	0.48983353
+2. .\ficheros/uno.txt	0.48983353
+3. .\ficheros/uno.txt	0.40819463
+4. .\ficheros/uno.txt	0.40819463
+Query: of, found 4 hits.
+1. .\ficheros/dos.txt	0.32562667
+2. .\ficheros/dos.txt	0.32562667
+3. .\ficheros/cuatro.txt	0.20886572
+4. .\ficheros/cuatro.txt	0.20886572
+Query: tomcat*, found 4 hits.
+1. .\ficheros/dos.txt	1.0
+2. .\ficheros/dos.txt	1.0
+3. .\ficheros/dos.txt	1.0
+4. .\ficheros/dos.txt	1.0
+Query: jakarta, found 0 hits.
+Query: Lucene -apache, found 0 hits.
+
+
+------------
+Conclusiones
+------------
+
+Las diferencias que se aprecian en la ejecución con una clase y con la otra son debidas a las propias características de cada una. 
+Con StandardAnalyzer las palabras comunes son ignoradas y no computan (stopwords), como es el caso de of o OR. 
+Sin embargo, estas palabras si son consideradas con SimpleAnalyzer y las incluye en los resultados encontrados. 
+
