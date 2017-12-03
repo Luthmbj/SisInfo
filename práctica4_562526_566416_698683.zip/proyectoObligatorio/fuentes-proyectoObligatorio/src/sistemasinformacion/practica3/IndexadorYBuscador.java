@@ -124,23 +124,18 @@ public class IndexadorYBuscador{
 		Collection<String> ficheros = f;
         String archivo;
         int i = 0;
-        // Se comprueba si la carpeta pasada com parámetro es directorio
-        if(c.isDirectory()){
-        	File[] listaF = c.listFiles(); 
-        	while(i < listaF.length) {
-                if (listaF[i].isFile()){
-                	archivo = listaF[i].getName();
-                    if (archivo.endsWith(".txt")){
-                    	System.out.println("Fichero encontrado: "+ c +"/" + archivo);
-                    	ficheros.add(c + "/" + archivo);
-                    }
-                }
-                if(listaF[i].isDirectory())  ficheros = recorrerDirectorio(listaF[i],ficheros);
-
-                i++;
-            }
+        File[] listaF = c.listFiles(); 
+       	while(i < listaF.length) {
+             if (listaF[i].isFile()){
+              	archivo = listaF[i].getName();
+            	 if (archivo.endsWith(".txt")){
+               		System.out.println("Fichero encontrado: "+ c +"/" + archivo);
+               		ficheros.add(c + "/" + archivo);
+             	}
+        	 }
+             if(listaF[i].isDirectory())  ficheros = recorrerDirectorio(listaF[i],ficheros);
+             i++;
         }
-        else System.out.println(c + " no es un directorio correcto");
 		return f;
 	}
 	
@@ -150,23 +145,24 @@ public class IndexadorYBuscador{
 		Scanner txt = new Scanner(System.in);
 		System.out.printf("Introduzca directorio en el buscar: ");
 		File carpeta = new File(txt.nextLine());
-		Collection <String> ficheros = recorrerDirectorio(carpeta,new ArrayList<String>());
-		/*ficheros.add("./ficheros/uno.txt");
-		ficheros.add("./ficheros/dos.txt");
-		ficheros.add("./ficheros/tres.txt");
-		ficheros.add("./ficheros/cuatro.txt");*/
-		Collection <String> queries = new ArrayList <String>();	
-		System.out.println();
-		System.out.printf("Introduzca query: [FIN para salir]");
-		String query="";
-		while(!(query = txt.nextLine()).equals("FIN")){
-			queries.add(query);
+		// Se comprueba si la carpeta pasada com parámetro es directorio
+		if (carpeta.isDirectory()){
+			Collection <String> ficheros = recorrerDirectorio(carpeta,new ArrayList<String>());
+			Collection <String> queries = new ArrayList <String>();	
+			System.out.println();
+		
 			System.out.printf("Introduzca query: [FIN para salir]");
-		}
-		txt.close();
-		IndexadorYBuscador ejemplo = new IndexadorYBuscador(ficheros, queries);
-		Directory directorioDelIndiceCreado = ejemplo.crearIndiceEnUnDirectorio(carpeta);
+			String query="";
+			while(!(query = txt.nextLine()).equals("FIN")){
+				queries.add(query);
+				System.out.printf("Introduzca query: [FIN para salir]");
+			}
+			txt.close();
+			IndexadorYBuscador ejemplo = new IndexadorYBuscador(ficheros, queries);
+			Directory directorioDelIndiceCreado = ejemplo.crearIndiceEnUnDirectorio(carpeta);
 
-		ejemplo.buscarQueries(directorioDelIndiceCreado, 1, ficheros.size());
+			ejemplo.buscarQueries(directorioDelIndiceCreado, 1, ficheros.size());
+		}
+		else System.out.println(carpeta + " no es un directorio correcto");
 	}
 }
