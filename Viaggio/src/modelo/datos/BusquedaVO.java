@@ -34,11 +34,11 @@ public class BusquedaVO {
         return fFin;
     }
 	
-	public String getNHabitaciones() {
+	public int getNHabitaciones() {
         return nHabitaciones;
     }
 	
-	public String getNPersonas() {
+	public int getNPersonas() {
         return nPersonas;
     }
 	

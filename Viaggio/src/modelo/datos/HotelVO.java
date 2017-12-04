@@ -1,10 +1,10 @@
 
-public class Hotel {
+public class HotelVO {
 
     private String url;
     private String nombre;
 
-    public Hotel(String url, String nombre){
+    public HotelVO(String url, String nombre){
         this.url = url;
         this.nombre = nombre;
     }

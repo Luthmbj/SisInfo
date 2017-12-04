@@ -1,11 +1,11 @@
 
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
 
-public interface HotelDAO {
+public class HotelDAO {
 	
 	public void insertarHotel (HotelVO hotel, Connection connection) {               
         try{
@@ -35,7 +35,7 @@ public interface HotelDAO {
         try{
             /* Create "preparedStatement". */
             String queryString = "UPDATE Hotel " +
-                "SET nombre = ? WHERE  url = ?)";                    
+                "SET nombre = ? WHERE  url = ?";                    
             PreparedStatement preparedStatement = 
                 connection.prepareStatement(queryString);
             
@@ -90,10 +90,7 @@ public interface HotelDAO {
             String queryString = "SELECT * FROM Hotel";                    
             PreparedStatement preparedStatement = 
                 connection.prepareStatement(queryString);
-            
-            /* Fill "preparedStatement". */    
-            preparedStatement.setString(1, url);
-                   
+
             /* Execute query. */                    
             ResultSet resultSet = preparedStatement.executeQuery();
                
@@ -101,12 +98,13 @@ public interface HotelDAO {
                 throw new SQLException( "Error: Hotel no encontrado");
             }
             
-            /* Execute query. */    
-			while(resultSet.next()){
+            /* Execute query. */   
+            do{
 				String url = resultSet.getString(1);
 				String nombre = resultSet.getString(2);
 				lista.add(new HotelVO(url,nombre));
 			}
+            while(resultSet.next());
 			if (lista.isEmpty()){
 				throw new Exception("Sin resultados");
 			}
@@ -128,10 +126,8 @@ public interface HotelDAO {
 			preparedStatement.setString(1, url);
 			
 			/* Execute query. */                    
-            int deletedRows = preparedStatement.executeQuery();
-			if (deletedRows != 1) {
-                throw new SQLException( "Error al eliminar hotel");
-            }       
+            preparedStatement.executeUpdate();
+  
 		} catch (Exception e) {
             e.printStackTrace(System.err);
 		}

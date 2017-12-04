@@ -4,7 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public interface UsuarioDAO {
+public class UsuarioDAO {
 	
 	public void insertarUsuario (UsuarioVO usuario, Connection connection) {               
         try{
@@ -39,7 +39,7 @@ public interface UsuarioDAO {
             /* Create "preparedStatement". */
             String queryString = "UPDATE Usuario " +
                 "SET nombre = ?, apellidos = ?, password = ?, " +
-            	" fnacimiento = ? WHERE  email = ?)";                    
+            	" fnacimiento = ? WHERE  email = ?";                    
             PreparedStatement preparedStatement = 
                 connection.prepareStatement(queryString);
             
@@ -106,10 +106,7 @@ public interface UsuarioDAO {
 			preparedStatement.setString(1, email);
 			
 			/* Execute query. */                    
-            int deletedRows = preparedStatement.executeQuery();
-			if (deletedRows != 1) {
-                throw new SQLException( "Error al eliminar usuario");
-            }       
+            preparedStatement.executeUpdate();
 		} catch (Exception e) {
             e.printStackTrace(System.err);
 		}

@@ -15,7 +15,7 @@ public class UsuarioVO{
 			this.nombre = nombre;
 		}
 		if (apellidos != null){
-			this.apellidos = apellido;
+			this.apellidos = apellidos;
 		}
 		if (pass != null){
 			this.pass = pass;
@@ -60,7 +60,7 @@ public class UsuarioVO{
 		this.pass = pass;
 	}
 	
-	public String setFecha() {
+	public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
